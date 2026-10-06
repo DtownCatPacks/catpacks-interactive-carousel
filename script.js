@@ -3,35 +3,32 @@ const foodData = {
     limit: 2,
 
     items: [
-    {
+      {
         name: "Breakfast Shake",
         price: 0.46,
         image: "images/Breakfast Shakes.svg"
       },
-
       {
         name: "Cereal Bar",
         price: 0.24,
         image: "images/Cereal Bar.svg"
       },
-
-      {
-        name: "Oatmeal Packet",
-        price: 0.19,
-        image: "images/Oatmeal.svg"
-      },
-
       {
         name: "Mini Box of Cereal",
         price: 0.62,
         image: "images/Mini Cereal.svg"
       },
-
+      {
+        name: "Oatmeal Packet",
+        price: 0.19,
+        image: "images/Oatmeal.svg"
+      },
       {
         name: "Toaster Pastries",
         price: 0.34,
         image: "images/Toaster Pastry.svg"
-      }
+      }     
+      
     ]
   },
 
@@ -45,84 +42,72 @@ const foodData = {
         price: 0.92,
         image: "images/Beans.svg"
       },
-      
       {
         name: "Canned Pasta",
         price: 1.18,
         image: "images/Canned Pasta.svg"
       },
-      
       {
         name: "Chili",
         price: 2.14,
         image: "images/Chili.svg"
       },
-
-      {
+     {
         name: "Macaroni and Cheese",
         price: 0.64,
         image: "images/Macaroni.svg"
       },
-      
       {
         name: "Mashed Potatoes and Canned Vegetables",
         price: 1.82,
         image: "images/Mashed Potatoes and Veg.svg"
       },
-      
       {
         name: "Pasta Sides",
         price: 1.34,
         image: "images/Pasta Sides.svg"
       },
-      
       {
         name: "Peanut Butter",
         price: 1.98,
         image: "images/Peanut Butter.svg"
       },
-      
       {
         name: "Plain Pasta",
         price: 1.24,
         image: "images/Pasta.svg"
       },
-      
       {
         name: "Ramen",
         price: 0.32,
         image: "images/Ramen.svg"
       },
-
-      {
+       {
         name: "Rice Sides",
         price: 1.34,
         image: "images/Rice Sides.svg"
       },
-      
       {
         name: "Soup",
         price: 0.82,
         image: "images/Soup.svg"
       },
-
       {
         name: "Stew",
         price: 2.97,
         image: "images/Stew.svg"
       },
-      
       {
         name: "Stuffing Mix",
         price: 0.97,
         image: "images/Stuffing.svg"
       },
-      
       {
         name: "Tuna",
         price: 1.00,
         image: "images/Tuna.svg"
       }
+      
     ]
   },
 
@@ -131,65 +116,57 @@ const foodData = {
     limit: 5,
 
     items: [
-      {
+       {
         name: "Applesauce",
         price: 0.36,
         image: "images/Applesauce.svg"
       },
-
-      {
+       {
         name: "Fruit",
         price: 0.66,
         image: "images/Fruit.svg"
       },
-      
       {
         name: "Granola Bar",
         price: 0.16,
         image: "images/Granola Bar.svg"
       },
-      
       {
         name: "Gummy Fruit Snacks",
         price: 0.19,
         image: "images/Fruit Snacks.svg"
       },
-
       {
         name: "Peanut Butter and Crackers",
         price: 0.77,
         image: "images/Peanut Butter and Crackers.svg"
       },
-
       {
         name: "Popcorn",
         price: 0.38,
         image: "images/Popcorn.svg"
       },
-      
       {
         name: "Salty Snack",
         price: 0.36,
         image: "images/Salty Snacks.svg"
       },
-
-      {
+       {
         name: "Sandwich Crackers",
         price: 0.35,
         image: "images/Sandwich Crackers.svg"
       },
-      
       {
         name: "Sweet Snack",
         price: 0.31,
         image: "images/Sweet Snacks.svg"
       },
-      
       {
         name: "Trail Mix",
         price: 0.52,
         image: "images/Trail Mix.svg"
-      }      
+      }
+          
     ]
   }
 };
@@ -249,18 +226,6 @@ const mobileItemCount =
 
 const mobileTotal =
   document.querySelector("#mobile-total");
-
-const viewReceiptButton =
-  document.querySelector("#view-receipt");
-
-const closeReceiptButton =
-  document.querySelector("#close-receipt");
-
-const mobileReceipt =
-  document.querySelector("#mobile-receipt");
-
-const mobileReceiptItems =
-  document.querySelector("#mobile-receipt-items");
 
 
 function getSelectedItems() {
@@ -492,12 +457,6 @@ function renderReceipt() {
 
   receiptItems.innerHTML = `
     <p class="receipt-placeholder">
-      Your items will appear when you pack your Cat Pack.
-    </p>
-  `;
-
-  mobileReceiptItems.innerHTML = `
-    <p class="receipt-placeholder">
       Your receipt will appear when you pack your Cat Pack.
     </p>
   `;
@@ -568,9 +527,6 @@ function clearReceiptForPacking() {
   receiptItems.innerHTML =
     "";
 
-  mobileReceiptItems.innerHTML =
-    "";
-
   totalDisplay.textContent =
     "$0.00";
 
@@ -590,12 +546,6 @@ function addPackedItemToReceipt(
 
   addReceiptLine(
     receiptItems,
-    item,
-    true
-  );
-
-  addReceiptLine(
-    mobileReceiptItems,
     item,
     true
   );
@@ -841,10 +791,6 @@ async function animateSelectedItemsIntoBag() {
     await appearAnimation.finished;
 
 
-    /*
-      Drop behind the bag.
-    */
-
     flyingImage.style.zIndex =
       "4";
 
@@ -882,11 +828,6 @@ async function animateSelectedItemsIntoBag() {
     flyingImage.remove();
 
 
-    /*
-      Add this item to the receipt
-      as soon as it has gone into the bag.
-    */
-
     packedCount += 1;
 
     runningTotal +=
@@ -904,10 +845,6 @@ async function animateSelectedItemsIntoBag() {
   }
 }
 
-
-/* --------------------
-   CAROUSEL CONTROLS
--------------------- */
 
 categoryCards.forEach((card) => {
 
@@ -1029,10 +966,6 @@ categoryCards.forEach((card) => {
 });
 
 
-/* --------------------
-   MOBILE CATEGORY TABS
--------------------- */
-
 tabs.forEach((tab) => {
 
   tab.addEventListener(
@@ -1083,10 +1016,6 @@ tabs.forEach((tab) => {
 });
 
 
-/* --------------------
-   PACK BUTTON
--------------------- */
-
 packButton.addEventListener(
   "click",
   async () => {
@@ -1112,17 +1041,8 @@ packButton.addEventListener(
       true;
 
 
-    /*
-      Lock the carousel immediately,
-      but do not overwrite the receipt.
-    */
-
     updateLockedSelectionUI();
 
-
-    /*
-      Bring the bag and receipt into view.
-    */
 
     document
       .querySelector("#results")
@@ -1135,17 +1055,8 @@ packButton.addEventListener(
     await wait(500);
 
 
-    /*
-      Start the receipt from zero,
-      then rebuild it during packing.
-    */
-
     clearReceiptForPacking();
 
-
-    /*
-      Pack all 11 items.
-    */
 
     await animateSelectedItemsIntoBag();
 
@@ -1156,10 +1067,6 @@ packButton.addEventListener(
     isPacked =
       true;
 
-
-    /*
-      Final bag pulse.
-    */
 
     bag.classList.remove(
       "packed"
@@ -1182,12 +1089,6 @@ packButton.addEventListener(
       false;
 
 
-    /*
-      Restore the final mobile wording
-      while leaving the finished receipt
-      exactly as it was built.
-    */
-
     mobileItemCount.textContent =
       "11 of 11 selected";
 
@@ -1196,10 +1097,6 @@ packButton.addEventListener(
   }
 );
 
-
-/* --------------------
-   START OVER
--------------------- */
 
 resetButton.addEventListener(
   "click",
@@ -1251,17 +1148,6 @@ resetButton.addEventListener(
       });
 
 
-    mobileReceipt.classList.remove(
-      "open"
-    );
-
-
-    mobileReceipt.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-
     tabs.forEach((tab) => {
 
       const breakfastTab =
@@ -1301,74 +1187,47 @@ resetButton.addEventListener(
 );
 
 
-/* --------------------
-   MOBILE RECEIPT
--------------------- */
-
-viewReceiptButton.addEventListener(
-  "click",
-  () => {
-
-    mobileReceipt.classList.add(
-      "open"
-    );
-
-
-    mobileReceipt.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-  }
-);
-
-
-closeReceiptButton.addEventListener(
-  "click",
-  () => {
-
-    mobileReceipt.classList.remove(
-      "open"
-    );
-
-
-    mobileReceipt.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-  }
-);
-
-
-/* --------------------
-   INITIAL RENDER
--------------------- */
-
 function preloadImages() {
 
-  const imagePaths = new Set();
-
-  Object.values(foodData).forEach((category) => {
-
-    category.items.forEach((item) => {
-      imagePaths.add(item.image);
-    });
-
-  });
-
-  imagePaths.add("images/bag.svg");
+  const imagePaths =
+    new Set();
 
 
-  imagePaths.forEach((path) => {
+  Object.values(foodData).forEach(
+    (category) => {
 
-    const image = new Image();
+      category.items.forEach(
+        (item) => {
 
-    image.src = path;
+          imagePaths.add(
+            item.image
+          );
 
-  });
+        }
+      );
 
+    }
+  );
+
+
+  imagePaths.add(
+    "images/bag.svg"
+  );
+
+
+  imagePaths.forEach(
+    (path) => {
+
+      const image =
+        new Image();
+
+      image.src =
+        path;
+
+    }
+  );
 }
+
 
 preloadImages();
 updateEverything();
