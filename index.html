@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cat Packs Builder</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="builder">
+
+    <!-- MOBILE / TABLET CATEGORY TABS -->
+
+    <div class="mobile-tabs" role="tablist" aria-label="Food categories">
+
+      <button
+        class="category-tab active"
+        data-tab="breakfast"
+        type="button"
+        role="tab"
+        aria-selected="true"
+      >
+        Breakfast
+        <span id="breakfast-tab-count">0/2</span>
+      </button>
+
+      <button
+        class="category-tab"
+        data-tab="meals"
+        type="button"
+        role="tab"
+        aria-selected="false"
+      >
+        Meals
+        <span id="meals-tab-count">0/4</span>
+      </button>
+
+      <button
+        class="category-tab"
+        data-tab="snacks"
+        type="button"
+        role="tab"
+        aria-selected="false"
+      >
+        Snacks
+        <span id="snacks-tab-count">0/5</span>
+      </button>
+
+    </div>
+
+
+    <!-- CAROUSELS -->
+
+    <section class="carousels">
+
+      <!-- BREAKFAST -->
+
+      <article
+        class="category-card active"
+        data-category="breakfast"
+      >
+
+        <div class="category-heading">
+
+          <div>
+            <h2>Breakfast</h2>
+            <p>Choose 2</p>
+          </div>
+
+          <span
+            class="category-count"
+            id="breakfast-count"
+          >
+            0 of 2
+          </span>
+
+        </div>
+
+
+        <div class="carousel">
+
+          <button
+            class="carousel-arrow previous"
+            type="button"
+            aria-label="Previous breakfast item"
+          >
+            &#8249;
+          </button>
+
+
+          <div class="item-card">
+
+            <div class="item-image-wrap">
+              <img
+                class="item-image"
+                src=""
+                alt=""
+              >
+            </div>
+
+            <h3 class="item-name"></h3>
+
+            <p class="item-price"></p>
+
+            <button
+              class="select-item"
+              type="button"
+            >
+              Select
+            </button>
+
+          </div>
+
+
+          <button
+            class="carousel-arrow next"
+            type="button"
+            aria-label="Next breakfast item"
+          >
+            &#8250;
+          </button>
+
+        </div>
+
+
+        <div class="selected-items"></div>
+
+      </article>
+
+
+      <!-- MEALS -->
+
+      <article
+        class="category-card"
+        data-category="meals"
+      >
+
+        <div class="category-heading">
+
+          <div>
+            <h2>Meals</h2>
+            <p>Choose 4</p>
+          </div>
+
+          <span
+            class="category-count"
+            id="meals-count"
+          >
+            0 of 4
+          </span>
+
+        </div>
+
+
+        <div class="carousel">
+
+          <button
+            class="carousel-arrow previous"
+            type="button"
+            aria-label="Previous meal item"
+          >
+            &#8249;
+          </button>
+
+
+          <div class="item-card">
+
+            <div class="item-image-wrap">
+              <img
+                class="item-image"
+                src=""
+                alt=""
+              >
+            </div>
+
+            <h3 class="item-name"></h3>
+
+            <p class="item-price"></p>
+
+            <button
+              class="select-item"
+              type="button"
+            >
+              Select
+            </button>
+
+          </div>
+
+
+          <button
+            class="carousel-arrow next"
+            type="button"
+            aria-label="Next meal item"
+          >
+            &#8250;
+          </button>
+
+        </div>
+
+
+        <div class="selected-items"></div>
+
+      </article>
+
+
+      <!-- SNACKS -->
+
+      <article
+        class="category-card"
+        data-category="snacks"
+      >
+
+        <div class="category-heading">
+
+          <div>
+            <h2>Snacks</h2>
+            <p>Choose 5</p>
+          </div>
+
+          <span
+            class="category-count"
+            id="snacks-count"
+          >
+            0 of 5
+          </span>
+
+        </div>
+
+
+        <div class="carousel">
+
+          <button
+            class="carousel-arrow previous"
+            type="button"
+            aria-label="Previous snack item"
+          >
+            &#8249;
+          </button>
+
+
+          <div class="item-card">
+
+            <div class="item-image-wrap">
+              <img
+                class="item-image"
+                src=""
+                alt=""
+              >
+            </div>
+
+            <h3 class="item-name"></h3>
+
+            <p class="item-price"></p>
+
+            <button
+              class="select-item"
+              type="button"
+            >
+              Select
+            </button>
+
+          </div>
+
+
+          <button
+            class="carousel-arrow next"
+            type="button"
+            aria-label="Next snack item"
+          >
+            &#8250;
+          </button>
+
+        </div>
+
+
+        <div class="selected-items"></div>
+
+      </article>
+
+    </section>
+
+
+    <!-- PACK / RESET -->
+
+    <div class="pack-area">
+
+      <p id="selection-status">
+        Choose 2 breakfast items, 4 meals, and 5 snacks.
+      </p>
+
+      <div class="pack-buttons">
+
+        <button
+          id="pack-button"
+          type="button"
+          disabled
+        >
+          Pack My Cat Pack
+        </button>
+
+        <button
+          id="reset-button"
+          type="button"
+          hidden
+        >
+          Start Over
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- BAG + RECEIPT -->
+
+    <section
+      class="results"
+      id="results"
+    >
+
+      <div class="bag-panel">
+
+        <div
+          class="bag"
+          id="bag"
+        >
+          <img
+            src="images/bag.svg"
+            alt="Cat Packs grocery bag"
+          >
+        </div>
+
+        <p
+          id="packed-message"
+          class="packed-message"
+          hidden
+        >
+          Your Cat Pack is ready!
+        </p>
+
+      </div>
+
+
+      <div class="receipt">
+
+        <div class="receipt-top">
+
+          <h2>CAT PACKS</h2>
+
+          <p>Your Custom Bag</p>
+
+        </div>
+
+        <div class="receipt-rule"></div>
+
+
+        <div
+          id="receipt-items"
+          class="receipt-items"
+          aria-live="polite"
+        >
+          <p class="receipt-placeholder">
+            Your selections will appear here.
+          </p>
+        </div>
+
+
+        <div class="receipt-rule"></div>
+
+
+        <div class="receipt-total">
+
+          <span>TOTAL</span>
+
+          <span id="total">
+            $0.00
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- MOBILE EXPANDED RECEIPT -->
+
+  <aside
+    id="mobile-receipt"
+    class="mobile-receipt"
+    aria-hidden="true"
+  >
+
+    <div class="mobile-receipt-header">
+
+      <strong>Your Cat Pack</strong>
+
+      <button
+        id="close-receipt"
+        type="button"
+        aria-label="Close receipt"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="mobile-receipt-items"
+      class="mobile-receipt-items"
+    ></div>
+
+  </aside>
+
+
+  <!-- MOBILE STICKY SUMMARY -->
+
+  <div class="mobile-summary">
+
+    <div class="mobile-summary-text">
+
+      <span id="mobile-item-count">
+        0 of 11 selected
+      </span>
+
+      <strong id="mobile-total">
+        $0.00
+      </strong>
+
+    </div>
+
+    <button
+      id="view-receipt"
+      type="button"
+    >
+      Receipt
+    </button>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
