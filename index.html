@@ -7,12 +7,12 @@
   <title>Cat Packs Builder</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-  rel="stylesheet"
->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,8 +20,6 @@
 <body>
 
   <main class="builder">
-
-    <!-- MOBILE / TABLET CATEGORY TABS -->
 
     <div class="mobile-tabs" role="tablist" aria-label="Food categories">
 
@@ -61,11 +59,7 @@
     </div>
 
 
-    <!-- CAROUSELS -->
-
     <section class="carousels">
-
-      <!-- BREAKFAST -->
 
       <article
         class="category-card active"
@@ -134,13 +128,10 @@
 
         </div>
 
-
         <div class="selected-items"></div>
 
       </article>
 
-
-      <!-- MEALS -->
 
       <article
         class="category-card"
@@ -209,13 +200,10 @@
 
         </div>
 
-
         <div class="selected-items"></div>
 
       </article>
 
-
-      <!-- SNACKS -->
 
       <article
         class="category-card"
@@ -284,15 +272,12 @@
 
         </div>
 
-
         <div class="selected-items"></div>
 
       </article>
 
     </section>
 
-
-    <!-- PACK / RESET -->
 
     <div class="pack-area">
 
@@ -322,8 +307,6 @@
 
     </div>
 
-
-    <!-- BAG + RECEIPT -->
 
     <section
       class="results"
@@ -372,7 +355,7 @@
           aria-live="polite"
         >
           <p class="receipt-placeholder">
-            Your selections will appear here.
+            Your receipt will appear when you pack your Cat Pack.
           </p>
         </div>
 
@@ -397,38 +380,6 @@
   </main>
 
 
-  <!-- MOBILE EXPANDED RECEIPT -->
-
-  <aside
-    id="mobile-receipt"
-    class="mobile-receipt"
-    aria-hidden="true"
-  >
-
-    <div class="mobile-receipt-header">
-
-      <strong>Your Cat Pack</strong>
-
-      <button
-        id="close-receipt"
-        type="button"
-        aria-label="Close receipt"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div
-      id="mobile-receipt-items"
-      class="mobile-receipt-items"
-    ></div>
-
-  </aside>
-
-
-  <!-- MOBILE STICKY SUMMARY -->
-
   <div class="mobile-summary">
 
     <div class="mobile-summary-text">
@@ -442,13 +393,6 @@
       </strong>
 
     </div>
-
-    <button
-      id="view-receipt"
-      type="button"
-    >
-      Receipt
-    </button>
 
   </div>
 
