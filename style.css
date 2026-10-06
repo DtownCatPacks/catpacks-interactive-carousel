@@ -5,7 +5,7 @@
 :root {
   --panel-border: #d8d8d8;
   --selected-background: #dad5e7;
-  --text-color: #504c44;
+  --text-color: #2f2e2e;
 }
 
 body {
@@ -310,7 +310,7 @@ button {
   border: 1px solid #aaa;
 
   background: white;
-  color: #2f2e2e;
+  color: var(--text-color);
 }
 
 #reset-button:hover {
@@ -523,11 +523,10 @@ button {
 
 
 /* --------------------
-   MOBILE RECEIPT
+   MOBILE SUMMARY
 -------------------- */
 
-.mobile-summary,
-.mobile-receipt {
+.mobile-summary {
   display: none;
 }
 
@@ -594,9 +593,6 @@ button:focus-visible {
     background: #dad5e7;
   }
 
-
-  /* one carousel at a time */
-
   .carousels {
     display: block;
   }
@@ -628,9 +624,6 @@ button:focus-visible {
     margin: 22px 0;
   }
 
-
-  /* bag + receipt */
-
   .results {
     grid-template-columns: 1fr;
 
@@ -646,9 +639,6 @@ button:focus-visible {
 
     margin: 0 auto;
   }
-
-
-  /* sticky summary */
 
   .mobile-summary {
     display: flex;
@@ -670,9 +660,8 @@ button:focus-visible {
       max(15px, env(safe-area-inset-left));
 
     align-items: center;
-    justify-content: space-between;
 
-    gap: 15px;
+    justify-content: center;
 
     background: #fffef7;
 
@@ -692,9 +681,9 @@ button:focus-visible {
 
     flex-direction: column;
 
-    gap: 3px;
+    align-items: center;
 
-    min-width: 0;
+    gap: 3px;
   }
 
   #mobile-item-count {
@@ -703,97 +692,6 @@ button:focus-visible {
 
   #mobile-total {
     font-size: 19px;
-  }
-
-  #view-receipt {
-    padding: 10px 13px;
-
-    border: none;
-    border-radius: 4px;
-
-    background: #dad5e7;
-    color: #2f2e2e;
-
-    font-weight: bold;
-
-    cursor: pointer;
-  }
-
-
-  /* expandable mobile receipt */
-
-  .mobile-receipt {
-    display: block;
-
-    position: fixed;
-
-    z-index: 999;
-
-    left: 12px;
-    right: 12px;
-    bottom: 76px;
-
-    max-height: 0;
-
-    overflow: hidden;
-
-    padding: 0 18px;
-
-    background: #fffef7;
-
-    box-shadow:
-      0 -3px 14px
-      rgba(0, 0, 0, 0.14);
-
-    font-family:
-      "Courier New",
-      monospace;
-
-    opacity: 0;
-
-    transition:
-      max-height 0.25s ease,
-      padding 0.25s ease,
-      opacity 0.2s ease;
-  }
-
-  .mobile-receipt.open {
-    max-height: 48vh;
-
-    overflow-y: auto;
-
-    padding:
-      18px
-      18px
-      22px;
-
-    opacity: 1;
-  }
-
-  .mobile-receipt-header {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 12px;
-  }
-
-  #close-receipt {
-    width: 40px;
-    height: 40px;
-
-    border: none;
-
-    background: transparent;
-
-    font-size: 28px;
-
-    cursor: pointer;
-  }
-
-  .mobile-receipt-items .receipt-line {
-    font-size: 13px;
   }
 }
 
