@@ -195,133 +195,193 @@ let isPacking = false;
 
 
 const categoryCards =
-  document.querySelectorAll(".category-card");
+  document.querySelectorAll(
+    ".category-card"
+  );
 
 const tabs =
-  document.querySelectorAll(".category-tab");
+  document.querySelectorAll(
+    ".category-tab"
+  );
 
 const receiptItems =
-  document.querySelector("#receipt-items");
+  document.querySelector(
+    "#receipt-items"
+  );
 
 const totalDisplay =
-  document.querySelector("#total");
+  document.querySelector(
+    "#total"
+  );
 
 const packButton =
-  document.querySelector("#pack-button");
+  document.querySelector(
+    "#pack-button"
+  );
 
 const resetButton =
-  document.querySelector("#reset-button");
+  document.querySelector(
+    "#reset-button"
+  );
 
 const selectionStatus =
-  document.querySelector("#selection-status");
+  document.querySelector(
+    "#selection-status"
+  );
 
 const bag =
-  document.querySelector("#bag");
+  document.querySelector(
+    "#bag"
+  );
 
 const packedMessage =
-  document.querySelector("#packed-message");
-
-const mobileItemCount =
-  document.querySelector("#mobile-item-count");
-
-const mobileTotal =
-  document.querySelector("#mobile-total");
+  document.querySelector(
+    "#packed-message"
+  );
 
 
 function getSelectedItems() {
+
   const selectedItems = [];
 
-  Object.keys(foodData).forEach((category) => {
 
-    state[category].selected.forEach((index) => {
+  Object.keys(foodData).forEach(
+    (category) => {
 
-      const item =
-        foodData[category].items[index];
+      state[
+        category
+      ].selected.forEach(
+        (index) => {
 
-      selectedItems.push({
-        category,
-        name: item.name,
-        price: item.price,
-        image: item.image
-      });
+          const item =
+            foodData[
+              category
+            ].items[index];
 
-    });
 
-  });
+          selectedItems.push({
+            category,
+            name: item.name,
+            price: item.price,
+            image: item.image
+          });
+
+        }
+      );
+
+    }
+  );
+
 
   return selectedItems;
 }
 
 
-function getTotal() {
-  return getSelectedItems().reduce(
-    (sum, item) => sum + item.price,
-    0
-  );
-}
+function categoryComplete(
+  category
+) {
 
-
-function categoryComplete(category) {
   return (
-    state[category].selected.size ===
-    foodData[category].limit
+    state[
+      category
+    ].selected.size ===
+    foodData[
+      category
+    ].limit
   );
 }
 
 
 function allCategoriesComplete() {
+
   return (
-    categoryComplete("breakfast") &&
-    categoryComplete("meals") &&
-    categoryComplete("snacks")
+    categoryComplete(
+      "breakfast"
+    ) &&
+    categoryComplete(
+      "meals"
+    ) &&
+    categoryComplete(
+      "snacks"
+    )
   );
 }
 
 
-function renderCategory(category) {
+function renderCategory(
+  category
+) {
+
   const card =
     document.querySelector(
       `[data-category="${category}"]`
     );
 
+
   const data =
-    foodData[category];
+    foodData[
+      category
+    ];
+
 
   const categoryState =
-    state[category];
+    state[
+      category
+    ];
+
 
   const item =
-    data.items[categoryState.index];
+    data.items[
+      categoryState.index
+    ];
 
 
   const name =
-    card.querySelector(".item-name");
+    card.querySelector(
+      ".item-name"
+    );
 
   const price =
-    card.querySelector(".item-price");
+    card.querySelector(
+      ".item-price"
+    );
 
   const image =
-    card.querySelector(".item-image");
+    card.querySelector(
+      ".item-image"
+    );
 
   const selectButton =
-    card.querySelector(".select-item");
+    card.querySelector(
+      ".select-item"
+    );
 
   const previousButton =
-    card.querySelector(".previous");
+    card.querySelector(
+      ".previous"
+    );
 
   const nextButton =
-    card.querySelector(".next");
+    card.querySelector(
+      ".next"
+    );
 
   const itemCard =
-    card.querySelector(".item-card");
+    card.querySelector(
+      ".item-card"
+    );
 
   const selectedContainer =
-    card.querySelector(".selected-items");
+    card.querySelector(
+      ".selected-items"
+    );
+
 
   const counter =
     document.querySelector(
       `#${category}-count`
     );
+
 
   const tabCounter =
     document.querySelector(
@@ -334,6 +394,7 @@ function renderCategory(category) {
       categoryState.index
     );
 
+
   const limitReached =
     categoryState.selected.size >=
     data.limit;
@@ -342,11 +403,14 @@ function renderCategory(category) {
   name.textContent =
     item.name;
 
+
   price.textContent =
     `$${item.price.toFixed(2)}`;
 
+
   image.src =
     item.image;
+
 
   image.alt =
     item.name;
@@ -358,24 +422,36 @@ function renderCategory(category) {
   );
 
 
-  if (isPacked || isPacking) {
+  if (
+    isPacked ||
+    isPacking
+  ) {
 
     selectButton.textContent =
       isSelected
         ? "Selected ✓"
         : "Selections Locked";
 
-    selectButton.disabled = true;
 
-    previousButton.disabled = true;
+    selectButton.disabled =
+      true;
 
-    nextButton.disabled = true;
+
+    previousButton.disabled =
+      true;
+
+
+    nextButton.disabled =
+      true;
 
   } else {
 
-    previousButton.disabled = false;
+    previousButton.disabled =
+      false;
 
-    nextButton.disabled = false;
+
+    nextButton.disabled =
+      false;
 
 
     if (isSelected) {
@@ -383,18 +459,26 @@ function renderCategory(category) {
       selectButton.textContent =
         "Selected ✓";
 
-      selectButton.disabled = false;
+
+      selectButton.disabled =
+        false;
+
 
       selectButton.classList.add(
         "selected"
       );
 
-    } else if (limitReached) {
+    } else if (
+      limitReached
+    ) {
 
       selectButton.textContent =
         "Limit Reached";
 
-      selectButton.disabled = true;
+
+      selectButton.disabled =
+        true;
+
 
       selectButton.classList.remove(
         "selected"
@@ -405,7 +489,10 @@ function renderCategory(category) {
       selectButton.textContent =
         "Select";
 
-      selectButton.disabled = false;
+
+      selectButton.disabled =
+        false;
+
 
       selectButton.classList.remove(
         "selected"
@@ -423,6 +510,7 @@ function renderCategory(category) {
   counter.textContent =
     `${count} of ${data.limit}`;
 
+
   tabCounter.textContent =
     `${count}/${data.limit}`;
 
@@ -435,14 +523,21 @@ function renderCategory(category) {
     (index) => {
 
       const chip =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
+
 
       chip.classList.add(
         "selected-chip"
       );
 
+
       chip.textContent =
-        data.items[index].name;
+        data.items[
+          index
+        ].name;
+
 
       selectedContainer.appendChild(
         chip
@@ -453,7 +548,7 @@ function renderCategory(category) {
 }
 
 
-function renderReceipt() {
+function renderReceiptPlaceholder() {
 
   receiptItems.innerHTML = `
     <p class="receipt-placeholder">
@@ -461,25 +556,22 @@ function renderReceipt() {
     </p>
   `;
 
+
   totalDisplay.textContent =
     "$0.00";
-
-  mobileTotal.textContent =
-    "$0.00";
-
-  mobileItemCount.textContent =
-    `${getSelectedItems().length} of 11 selected`;
 }
 
 
 function addReceiptLine(
-  container,
   item,
   animate = false
 ) {
 
   const line =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   line.classList.add(
     "receipt-line"
@@ -487,21 +579,29 @@ function addReceiptLine(
 
 
   if (animate) {
+
     line.classList.add(
       "new-line"
     );
+
   }
 
 
   const itemName =
-    document.createElement("span");
+    document.createElement(
+      "span"
+    );
+
 
   itemName.textContent =
     item.name;
 
 
   const itemPrice =
-    document.createElement("span");
+    document.createElement(
+      "span"
+    );
+
 
   itemPrice.textContent =
     `$${item.price.toFixed(2)}`;
@@ -511,12 +611,13 @@ function addReceiptLine(
     itemName
   );
 
+
   line.appendChild(
     itemPrice
   );
 
 
-  container.appendChild(
+  receiptItems.appendChild(
     line
   );
 }
@@ -527,25 +628,18 @@ function clearReceiptForPacking() {
   receiptItems.innerHTML =
     "";
 
+
   totalDisplay.textContent =
     "$0.00";
-
-  mobileTotal.textContent =
-    "$0.00";
-
-  mobileItemCount.textContent =
-    "Packing 0 of 11";
 }
 
 
 function addPackedItemToReceipt(
   item,
-  packedCount,
   runningTotal
 ) {
 
   addReceiptLine(
-    receiptItems,
     item,
     true
   );
@@ -553,16 +647,11 @@ function addPackedItemToReceipt(
 
   totalDisplay.textContent =
     `$${runningTotal.toFixed(2)}`;
-
-  mobileTotal.textContent =
-    `$${runningTotal.toFixed(2)}`;
-
-  mobileItemCount.textContent =
-    `Packing ${packedCount} of 11`;
 }
 
 
 function updatePackButton() {
+
   const complete =
     allCategoriesComplete();
 
@@ -572,11 +661,14 @@ function updatePackButton() {
     packButton.disabled =
       true;
 
+
     packButton.textContent =
       "Packing...";
 
+
     selectionStatus.textContent =
       "Packing your Cat Pack...";
+
 
     return;
   }
@@ -587,11 +679,14 @@ function updatePackButton() {
     packButton.disabled =
       true;
 
+
     packButton.textContent =
       "Cat Pack Packed";
 
+
     selectionStatus.textContent =
       "Your selections are locked.";
+
 
     return;
   }
@@ -599,6 +694,7 @@ function updatePackButton() {
 
   packButton.textContent =
     "Pack My Cat Pack";
+
 
   packButton.disabled =
     !complete;
@@ -624,63 +720,86 @@ function updatePackButton() {
 }
 
 
+function updateSelectionUI() {
+
+  renderCategory(
+    "breakfast"
+  );
+
+
+  renderCategory(
+    "meals"
+  );
+
+
+  renderCategory(
+    "snacks"
+  );
+
+
+  updatePackButton();
+}
+
+
 function updateEverything() {
 
-  renderCategory("breakfast");
+  updateSelectionUI();
 
-  renderCategory("meals");
 
-  renderCategory("snacks");
+  if (
+    !isPacking &&
+    !isPacked
+  ) {
 
-  renderReceipt();
+    renderReceiptPlaceholder();
 
-  updatePackButton();
+  }
 }
 
 
-function updateLockedSelectionUI() {
-
-  renderCategory("breakfast");
-
-  renderCategory("meals");
-
-  renderCategory("snacks");
-
-  updatePackButton();
-}
-
-
-function wait(milliseconds) {
+function wait(
+  milliseconds
+) {
 
   return new Promise(
     (resolve) =>
-      setTimeout(resolve, milliseconds)
+      setTimeout(
+        resolve,
+        milliseconds
+      )
   );
 }
 
 
-function waitForImage(image) {
+function waitForImage(
+  image
+) {
 
   if (image.complete) {
+
     return Promise.resolve();
+
   }
 
 
-  return new Promise((resolve) => {
+  return new Promise(
+    (resolve) => {
 
-    image.addEventListener(
-      "load",
-      resolve,
-      { once: true }
-    );
+      image.addEventListener(
+        "load",
+        resolve,
+        { once: true }
+      );
 
-    image.addEventListener(
-      "error",
-      resolve,
-      { once: true }
-    );
 
-  });
+      image.addEventListener(
+        "error",
+        resolve,
+        { once: true }
+      );
+
+    }
+  );
 }
 
 
@@ -689,14 +808,15 @@ async function animateSelectedItemsIntoBag() {
   const selectedItems =
     getSelectedItems();
 
+
   let runningTotal =
     0;
 
-  let packedCount =
-    0;
 
-
-  for (const item of selectedItems) {
+  for (
+    const item
+    of selectedItems
+  ) {
 
     const bagRect =
       bag.getBoundingClientRect();
@@ -707,20 +827,25 @@ async function animateSelectedItemsIntoBag() {
         155,
         Math.max(
           100,
-          window.innerWidth * 0.21
+          window.innerWidth *
+          0.21
         )
       );
 
 
     const flyingImage =
-      document.createElement("img");
+      document.createElement(
+        "img"
+      );
 
 
     flyingImage.src =
       item.image;
 
+
     flyingImage.alt =
       "";
+
 
     flyingImage.classList.add(
       "packing-copy"
@@ -729,6 +854,7 @@ async function animateSelectedItemsIntoBag() {
 
     flyingImage.style.width =
       `${size}px`;
+
 
     flyingImage.style.height =
       `${size}px`;
@@ -748,8 +874,10 @@ async function animateSelectedItemsIntoBag() {
     flyingImage.style.left =
       `${startX}px`;
 
+
     flyingImage.style.top =
       `${startY}px`;
+
 
     flyingImage.style.zIndex =
       "9999";
@@ -771,18 +899,22 @@ async function animateSelectedItemsIntoBag() {
           {
             transform:
               "translateY(-12px) scale(0.9)",
+
             opacity: 0
           },
 
           {
             transform:
               "translateY(0) scale(1)",
+
             opacity: 1
           }
         ],
         {
           duration: 110,
+
           easing: "ease-out",
+
           fill: "forwards"
         }
       );
@@ -796,7 +928,8 @@ async function animateSelectedItemsIntoBag() {
 
 
     const dropDistance =
-      bagRect.height * 0.50;
+      bagRect.height *
+      0.50;
 
 
     const dropAnimation =
@@ -805,18 +938,22 @@ async function animateSelectedItemsIntoBag() {
           {
             transform:
               "translateY(0) scale(1)",
+
             opacity: 1
           },
 
           {
             transform:
               `translateY(${dropDistance}px) scale(0.55)`,
+
             opacity: 0
           }
         ],
         {
           duration: 210,
+
           easing: "ease-in",
+
           fill: "forwards"
         }
       );
@@ -828,193 +965,259 @@ async function animateSelectedItemsIntoBag() {
     flyingImage.remove();
 
 
-    packedCount += 1;
-
     runningTotal +=
       item.price;
 
 
     addPackedItemToReceipt(
       item,
-      packedCount,
       runningTotal
     );
 
 
-    await wait(25);
+    await wait(
+      25
+    );
   }
 }
 
 
-categoryCards.forEach((card) => {
+/* --------------------
+   CAROUSEL CONTROLS
+-------------------- */
 
-  const category =
-    card.dataset.category;
+categoryCards.forEach(
+  (card) => {
 
-
-  const previousButton =
-    card.querySelector(".previous");
-
-  const nextButton =
-    card.querySelector(".next");
-
-  const selectButton =
-    card.querySelector(".select-item");
+    const category =
+      card.dataset.category;
 
 
-  previousButton.addEventListener(
-    "click",
-    () => {
-
-      if (isPacked || isPacking) {
-        return;
-      }
-
-
-      const itemCount =
-        foodData[category].items.length;
-
-
-      state[category].index =
-        (
-          state[category].index -
-          1 +
-          itemCount
-        ) %
-        itemCount;
-
-
-      renderCategory(category);
-    }
-  );
-
-
-  nextButton.addEventListener(
-    "click",
-    () => {
-
-      if (isPacked || isPacking) {
-        return;
-      }
-
-
-      const itemCount =
-        foodData[category].items.length;
-
-
-      state[category].index =
-        (
-          state[category].index +
-          1
-        ) %
-        itemCount;
-
-
-      renderCategory(category);
-    }
-  );
-
-
-  selectButton.addEventListener(
-    "click",
-    () => {
-
-      if (isPacked || isPacking) {
-        return;
-      }
-
-
-      const currentIndex =
-        state[category].index;
-
-
-      const selected =
-        state[category].selected;
-
-
-      const limit =
-        foodData[category].limit;
-
-
-      if (
-        selected.has(currentIndex)
-      ) {
-
-        selected.delete(
-          currentIndex
-        );
-
-      } else if (
-        selected.size < limit
-      ) {
-
-        selected.add(
-          currentIndex
-        );
-
-      }
-
-
-      packedMessage.hidden =
-        true;
-
-
-      updateEverything();
-    }
-  );
-
-});
-
-
-tabs.forEach((tab) => {
-
-  tab.addEventListener(
-    "click",
-    () => {
-
-      const category =
-        tab.dataset.tab;
-
-
-      tabs.forEach(
-        (otherTab) => {
-
-          const active =
-            otherTab === tab;
-
-
-          otherTab.classList.toggle(
-            "active",
-            active
-          );
-
-
-          otherTab.setAttribute(
-            "aria-selected",
-            active
-          );
-
-        }
+    const previousButton =
+      card.querySelector(
+        ".previous"
       );
 
 
-      categoryCards.forEach(
-        (card) => {
+    const nextButton =
+      card.querySelector(
+        ".next"
+      );
 
-          card.classList.toggle(
-            "active",
-            card.dataset.category ===
+
+    const selectButton =
+      card.querySelector(
+        ".select-item"
+      );
+
+
+    previousButton.addEventListener(
+      "click",
+      () => {
+
+        if (
+          isPacked ||
+          isPacking
+        ) {
+
+          return;
+
+        }
+
+
+        const itemCount =
+          foodData[
+            category
+          ].items.length;
+
+
+        state[
+          category
+        ].index =
+          (
+            state[
               category
+            ].index -
+            1 +
+            itemCount
+          ) %
+          itemCount;
+
+
+        renderCategory(
+          category
+        );
+
+      }
+    );
+
+
+    nextButton.addEventListener(
+      "click",
+      () => {
+
+        if (
+          isPacked ||
+          isPacking
+        ) {
+
+          return;
+
+        }
+
+
+        const itemCount =
+          foodData[
+            category
+          ].items.length;
+
+
+        state[
+          category
+        ].index =
+          (
+            state[
+              category
+            ].index +
+            1
+          ) %
+          itemCount;
+
+
+        renderCategory(
+          category
+        );
+
+      }
+    );
+
+
+    selectButton.addEventListener(
+      "click",
+      () => {
+
+        if (
+          isPacked ||
+          isPacking
+        ) {
+
+          return;
+
+        }
+
+
+        const currentIndex =
+          state[
+            category
+          ].index;
+
+
+        const selected =
+          state[
+            category
+          ].selected;
+
+
+        const limit =
+          foodData[
+            category
+          ].limit;
+
+
+        if (
+          selected.has(
+            currentIndex
+          )
+        ) {
+
+          selected.delete(
+            currentIndex
+          );
+
+        } else if (
+          selected.size <
+          limit
+        ) {
+
+          selected.add(
+            currentIndex
           );
 
         }
-      );
 
-    }
-  );
 
-});
+        packedMessage.hidden =
+          true;
 
+
+        updateEverything();
+
+      }
+    );
+
+  }
+);
+
+
+/* --------------------
+   MOBILE CATEGORY TABS
+-------------------- */
+
+tabs.forEach(
+  (tab) => {
+
+    tab.addEventListener(
+      "click",
+      () => {
+
+        const category =
+          tab.dataset.tab;
+
+
+        tabs.forEach(
+          (otherTab) => {
+
+            const active =
+              otherTab === tab;
+
+
+            otherTab.classList.toggle(
+              "active",
+              active
+            );
+
+
+            otherTab.setAttribute(
+              "aria-selected",
+              active
+            );
+
+          }
+        );
+
+
+        categoryCards.forEach(
+          (card) => {
+
+            card.classList.toggle(
+              "active",
+              card.dataset.category ===
+                category
+            );
+
+          }
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* --------------------
+   PACK BUTTON
+-------------------- */
 
 packButton.addEventListener(
   "click",
@@ -1025,7 +1228,9 @@ packButton.addEventListener(
       isPacked ||
       isPacking
     ) {
+
       return;
+
     }
 
 
@@ -1041,18 +1246,22 @@ packButton.addEventListener(
       true;
 
 
-    updateLockedSelectionUI();
+    updateSelectionUI();
 
 
     document
-      .querySelector("#results")
+      .querySelector(
+        "#results"
+      )
       .scrollIntoView({
         behavior: "smooth",
         block: "center"
       });
 
 
-    await wait(500);
+    await wait(
+      500
+    );
 
 
     clearReceiptForPacking();
@@ -1063,6 +1272,7 @@ packButton.addEventListener(
 
     isPacking =
       false;
+
 
     isPacked =
       true;
@@ -1089,14 +1299,15 @@ packButton.addEventListener(
       false;
 
 
-    mobileItemCount.textContent =
-      "11 of 11 selected";
+    updateSelectionUI();
 
-
-    updateLockedSelectionUI();
   }
 );
 
+
+/* --------------------
+   RESET
+-------------------- */
 
 resetButton.addEventListener(
   "click",
@@ -1104,6 +1315,7 @@ resetButton.addEventListener(
 
     isPacked =
       false;
+
 
     isPacking =
       false;
@@ -1116,8 +1328,10 @@ resetButton.addEventListener(
     state.breakfast.index =
       0;
 
+
     state.meals.index =
       0;
+
 
     state.snacks.index =
       0;
@@ -1125,7 +1339,9 @@ resetButton.addEventListener(
 
     state.breakfast.selected.clear();
 
+
     state.meals.selected.clear();
+
 
     state.snacks.selected.clear();
 
@@ -1143,30 +1359,36 @@ resetButton.addEventListener(
       .querySelectorAll(
         ".packing-copy"
       )
-      .forEach((item) => {
-        item.remove();
-      });
+      .forEach(
+        (item) => {
 
+          item.remove();
 
-    tabs.forEach((tab) => {
-
-      const breakfastTab =
-        tab.dataset.tab ===
-        "breakfast";
-
-
-      tab.classList.toggle(
-        "active",
-        breakfastTab
+        }
       );
 
 
-      tab.setAttribute(
-        "aria-selected",
-        breakfastTab
-      );
+    tabs.forEach(
+      (tab) => {
 
-    });
+        const breakfastTab =
+          tab.dataset.tab ===
+          "breakfast";
+
+
+        tab.classList.toggle(
+          "active",
+          breakfastTab
+        );
+
+
+        tab.setAttribute(
+          "aria-selected",
+          breakfastTab
+        );
+
+      }
+    );
 
 
     categoryCards.forEach(
@@ -1183,9 +1405,14 @@ resetButton.addEventListener(
 
 
     updateEverything();
+
   }
 );
 
+
+/* --------------------
+   PRELOAD IMAGES
+-------------------- */
 
 function preloadImages() {
 
@@ -1193,7 +1420,9 @@ function preloadImages() {
     new Set();
 
 
-  Object.values(foodData).forEach(
+  Object.values(
+    foodData
+  ).forEach(
     (category) => {
 
       category.items.forEach(
@@ -1221,6 +1450,7 @@ function preloadImages() {
       const image =
         new Image();
 
+
       image.src =
         path;
 
@@ -1229,5 +1459,10 @@ function preloadImages() {
 }
 
 
+/* --------------------
+   INITIALIZE
+-------------------- */
+
 preloadImages();
+
 updateEverything();
