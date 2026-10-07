@@ -10,9 +10,11 @@
 
 body {
   margin: 0;
+
   padding: 30px 20px 60px;
 
   background: transparent;
+
   color: var(--text-color);
 
   font-family: "Montserrat", sans-serif;
@@ -24,6 +26,7 @@ button {
 
 .builder {
   width: min(1100px, 100%);
+
   margin: 0 auto;
 }
 
@@ -55,7 +58,9 @@ button {
 
   padding: 20px;
 
-  border: 1px solid var(--panel-border);
+  border:
+    1px solid var(--panel-border);
+
   border-radius: 12px;
 
   background: white;
@@ -65,6 +70,7 @@ button {
   display: flex;
 
   justify-content: space-between;
+
   align-items: flex-start;
 
   gap: 12px;
@@ -90,6 +96,7 @@ button {
   white-space: nowrap;
 
   font-size: 14px;
+
   font-weight: bold;
 }
 
@@ -114,12 +121,15 @@ button {
   height: 44px;
 
   border: none;
+
   border-radius: 50%;
 
   background: #eeeeee;
+
   color: var(--text-color);
 
   font-size: 32px;
+
   line-height: 1;
 
   cursor: pointer;
@@ -150,11 +160,13 @@ button {
   display: flex;
 
   width: min(190px, 100%);
+
   aspect-ratio: 1;
 
   margin: 0 auto 14px;
 
   align-items: center;
+
   justify-content: center;
 
   border-radius: 16px;
@@ -169,8 +181,11 @@ button {
   object-fit: contain;
 }
 
-.item-card.selected .item-image-wrap {
-  outline: 3px solid #82789a;
+.item-card.selected
+.item-image-wrap {
+  outline:
+    3px solid #82789a;
+
   outline-offset: 4px;
 
   background: #f7f4fb;
@@ -196,10 +211,14 @@ button {
   padding: 10px 16px;
 
   border: none;
+
   border-radius: 5px;
 
-  background: var(--selected-background);
-  color: var(--text-color);
+  background:
+    var(--selected-background);
+
+  color:
+    var(--text-color);
 
   font-weight: bold;
 
@@ -279,6 +298,7 @@ button {
   padding: 13px 24px;
 
   border: none;
+
   border-radius: 5px;
 
   font-weight: bold;
@@ -288,16 +308,20 @@ button {
 
 #pack-button {
   background: #303795;
+
   color: white;
 
   transition:
     background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 #pack-button:not(:disabled):hover {
   background: #272e7e;
-  transform: translateY(-1px);
+
+  transform:
+    translateY(-1px);
 }
 
 #pack-button:disabled {
@@ -307,10 +331,13 @@ button {
 }
 
 #reset-button {
-  border: 1px solid #aaa;
+  border:
+    1px solid #aaa;
 
   background: white;
-  color: var(--text-color);
+
+  color:
+    var(--text-color);
 }
 
 #reset-button:hover {
@@ -352,14 +379,17 @@ button {
   display: block;
 
   width: 100%;
+
   height: auto;
 }
 
 .bag.packed {
-  animation: bag-pop 0.45s ease;
+  animation:
+    bag-pop 0.45s ease;
 }
 
 @keyframes bag-pop {
+
   0% {
     transform: scale(1);
   }
@@ -408,9 +438,11 @@ button {
   position: absolute;
 
   bottom: -10px;
+
   left: 0;
 
   width: 100%;
+
   height: 10px;
 
   background:
@@ -418,13 +450,15 @@ button {
       135deg,
       #fffef7 5px,
       transparent 0
-    ) 0 5px / 10px 10px repeat-x,
+    )
+    0 5px / 10px 10px repeat-x,
 
     linear-gradient(
       45deg,
       transparent 5px,
       #fffef7 0
-    ) 0 5px / 10px 10px repeat-x;
+    )
+    0 5px / 10px 10px repeat-x;
 }
 
 .receipt-top {
@@ -444,7 +478,8 @@ button {
 .receipt-rule {
   margin: 14px 0;
 
-  border-top: 1px dashed #777;
+  border-top:
+    1px dashed #777;
 }
 
 .receipt-items {
@@ -473,23 +508,30 @@ button {
   font-size: 14px;
 }
 
-.receipt-line span:last-child {
+.receipt-line
+span:last-child {
   white-space: nowrap;
 }
 
 .receipt-line.new-line {
-  animation: receipt-line-in 0.18s ease-out;
+  animation:
+    receipt-line-in 0.18s ease-out;
 }
 
 @keyframes receipt-line-in {
+
   from {
     opacity: 0;
-    transform: translateY(-4px);
+
+    transform:
+      translateY(-4px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
@@ -499,6 +541,7 @@ button {
   justify-content: space-between;
 
   font-size: 19px;
+
   font-weight: bold;
 }
 
@@ -523,20 +566,13 @@ button {
 
 
 /* --------------------
-   MOBILE SUMMARY
--------------------- */
-
-.mobile-summary {
-  display: none;
-}
-
-
-/* --------------------
    FOCUS
 -------------------- */
 
 button:focus-visible {
-  outline: 3px solid #6f6485;
+  outline:
+    3px solid #6f6485;
+
   outline-offset: 3px;
 }
 
@@ -551,8 +587,9 @@ button:focus-visible {
     padding:
       18px
       15px
-      105px;
+      40px;
   }
+
 
   .mobile-tabs {
     display: grid;
@@ -565,20 +602,26 @@ button:focus-visible {
     margin-bottom: 18px;
   }
 
+
   .category-tab {
     padding: 10px 5px;
 
     border: none;
+
     border-radius: 7px;
 
     background: #eeeeee;
-    color: var(--text-color);
+
+    color:
+      var(--text-color);
 
     font-size: 13px;
+
     font-weight: bold;
 
     cursor: pointer;
   }
+
 
   .category-tab span {
     display: block;
@@ -586,16 +629,20 @@ button:focus-visible {
     margin-top: 3px;
 
     font-size: 11px;
+
     font-weight: normal;
   }
+
 
   .category-tab.active {
     background: #dad5e7;
   }
 
+
   .carousels {
     display: block;
   }
+
 
   .category-card {
     display: none;
@@ -603,26 +650,35 @@ button:focus-visible {
     padding: 18px;
   }
 
+
   .category-card.active {
     display: block;
   }
 
+
   .carousel {
     grid-template-columns:
-      48px minmax(0, 1fr) 48px;
+      48px
+      minmax(0, 1fr)
+      48px;
   }
 
+
   .item-image-wrap {
-    width: min(210px, 58vw);
+    width:
+      min(210px, 58vw);
   }
+
 
   .selected-items {
     margin-top: 14px;
   }
 
+
   .pack-area {
     margin: 22px 0;
   }
+
 
   .results {
     grid-template-columns: 1fr;
@@ -630,68 +686,18 @@ button:focus-visible {
     gap: 30px;
   }
 
+
   .bag {
-    width: min(260px, 68vw);
+    width:
+      min(260px, 68vw);
   }
+
 
   .receipt {
-    width: min(390px, 100%);
+    width:
+      min(390px, 100%);
 
     margin: 0 auto;
-  }
-
-  .mobile-summary {
-    display: flex;
-
-    position: fixed;
-
-    z-index: 1000;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    min-height: 70px;
-
-    padding:
-      10px
-      max(15px, env(safe-area-inset-right))
-      calc(10px + env(safe-area-inset-bottom))
-      max(15px, env(safe-area-inset-left));
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #fffef7;
-
-    border-top: 1px solid #d8d8d8;
-
-    box-shadow:
-      0 -3px 12px
-      rgba(0, 0, 0, 0.08);
-
-    font-family:
-      "Courier New",
-      monospace;
-  }
-
-  .mobile-summary-text {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 3px;
-  }
-
-  #mobile-item-count {
-    font-size: 12px;
-  }
-
-  #mobile-total {
-    font-size: 19px;
   }
 }
 
@@ -706,24 +712,33 @@ button:focus-visible {
     font-size: 12px;
   }
 
+
   .category-card {
     padding-left: 12px;
+
     padding-right: 12px;
   }
 
+
   .carousel {
     grid-template-columns:
-      42px minmax(0, 1fr) 42px;
+      42px
+      minmax(0, 1fr)
+      42px;
 
     gap: 4px;
   }
 
+
   .carousel-arrow {
     width: 42px;
+
     height: 42px;
   }
 
+
   .item-image-wrap {
-    width: min(190px, 56vw);
+    width:
+      min(190px, 56vw);
   }
 }
